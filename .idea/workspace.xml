@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="146dc8d3-0c12-4f9a-b324-d41107d26781" name="Changes" comment="Add files">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataFiles/542303_2023_plate_appearances.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataFiles/545361_2021_plate_appearances.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataFiles/592663_2023_plate_appearances.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataFiles/all_pitchers_game_logs_2023-04-01_to_2023-10-01.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataFiles/all_pitchers_game_logs_2023-04-01_to_2023-10-01.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataFiles/all_pitchers_game_logs_2023-04-01_to_2023-10-01_first2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataFiles/all_pitchers_game_logs_2023-04-01_to_2023-10-01_first2.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataFiles/all_pitchers_game_logs_2023-04-01_to_2023-10-01_first2_shortened.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataFiles/all_pitchers_game_logs_2023-04-01_to_2023-10-01_first2_shortened.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataFiles/all_pitchers_game_logs_2023-04-01_to_2023-10-01_first5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataFiles/all_pitchers_game_logs_2023-04-01_to_2023-10-01_first5.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataFiles/all_pitchers_game_logs_2023.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataFiles/bettsmo01_2024_game_logs.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataFiles/combined_game_logs.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataFiles/pitcher_data_game_logs2023.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataFiles/plate_appearances_troutmi01_2021.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataFiles/player_game_stats_2023-04-01_to_2023-10-01.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataFiles/player_game_stats_2023-04-01_to_2023-10-01.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataFiles/top_batters_pas_2023-04-01_to_2023-10-01.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataFiles/top_batters_pas_2023-04-01_to_2023-10-01.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataFiles/top_player_game_logs2023.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataFiles/top_player_game_logs2023.pkl" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="bace6eac-6b27-4730-88e6-478333538b6e" />
+        <option name="url" value="https://github.com/bkkesler/MachineLearningBaseBall.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2gQsFyiOPAWQjF4AOlzivnMvh2Q" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.GradientBoostingRegressor.executor": "Run",
+    "Python.NeuralNetwork.executor": "Run",
+    "Python.calculate_stats.executor": "Run",
+    "Python.gather_data.executor": "Run",
+    "Python.handle_edgecases.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.main1.executor": "Run",
+    "Python.pybaseball_gather_data.executor": "Run",
+    "Python.single_run.executor": "Run",
+    "Python.train_model.executor": "Run",
+    "Python.train_model_randomforest.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/BeatTheStreak/pythonProject",
+    "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\BeatTheStreak\pythonProject" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="pythonProject" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-d68999036c7f-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.14475.56" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="146dc8d3-0c12-4f9a-b324-d41107d26781" name="Changes" comment="" />
+      <created>1715641035890</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1715641035890</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Add files">
+      <option name="closed" value="true" />
+      <created>1717712931537</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1717712931537</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add files">
+      <option name="closed" value="true" />
+      <created>1717814234281</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1717814234281</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add files">
+      <option name="closed" value="true" />
+      <created>1717814947745</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1717814947745</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add files">
+      <option name="closed" value="true" />
+      <created>1717815852835</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1717815852835</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add files">
+      <option name="closed" value="true" />
+      <created>1717815887935</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1717815887936</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add files">
+      <option name="closed" value="true" />
+      <created>1717816306112</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1717816306112</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add files" />
+  </component>
+</project>
