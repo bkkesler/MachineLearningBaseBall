@@ -1,11 +1,13 @@
-import pandas as pd
-from sklearn.ensemble import GradientBoostingRegressor
-from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
-from sklearn.preprocessing import StandardScaler  # Import StandardScaler
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.preprocessing import StandardScaler
+import pandas as pd
 from scipy.stats import spearmanr
+from scipy.optimize import nnls
 
 Folder = 'DataFiles\\'
+
 year = 2023
 start_date = f"{year}-04-01"
 end_date = f"{year}-10-01"
@@ -13,9 +15,6 @@ final_dataframe = pd.read_pickle(f'{Folder}player_game_stats_{start_date}_to_{en
 
 # Remove rows with NaN values
 final_dataframe = final_dataframe.dropna()
-
-#Scale stadium hits
-final_dataframe['Stadium_Hits'] = final_dataframe['Stadium_Hits']/50
 
 # Assuming your DataFrame is named 'final_dataframe'
 # Select the relevant features and target variable
@@ -38,30 +37,41 @@ scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
 # Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
 
-# Create and train the Gradient Boosting Regressor
-gb_regressor = GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_depth=3, random_state=42)
-gb_regressor.fit(X_train, y_train)
-
-# Perform grid search to find the best hyperparameters
+# Define the parameter grid for grid search
 param_grid = {
-    'n_estimators': [50, 100, 200],
-    'learning_rate': [0.01, 0.1, 0.2],
-    'max_depth': [3, 5, 7]
+    'fit_intercept': [True, False],
+    'positive': [True, False]
 }
-grid_search = GridSearchCV(estimator=gb_regressor, param_grid=param_grid, cv=5, scoring='neg_mean_squared_error')
+
+# Create the linear regression model
+model = LinearRegression()
+
+# Perform grid search
+grid_search = GridSearchCV(estimator=model, param_grid=param_grid, cv=5, scoring='neg_mean_squared_error')
 grid_search.fit(X_train, y_train)
 
-# Get the best model and its parameters
-best_gb_regressor = grid_search.best_estimator_
-print(f"Best parameters: {grid_search.best_params_}")
+# Get the best model
+best_model = grid_search.best_estimator_
 
-# Make predictions on the test set using the best model
-y_pred = best_gb_regressor.predict(X_test)
+# Print the best hyperparameters
+print("Best Hyperparameters:")
+print(grid_search.best_params_)
+
+# Perform NNLS regression with the best model
+coefficients, _ = nnls(X_train, y_train)
+
+# Print the feature weights
+print("\nFeature Weights:")
+for feature, weight in zip(features, coefficients):
+    print(f"{feature}: {weight:.4f}")
+
+# Make predictions on the test set
+y_pred = X_test @ coefficients
 
 # Print the predictions and actual values side by side
-print("Predictions\tActual")
+print("\nPredictions\tActual")
 for pred, actual in zip(y_pred, y_test):
     print(f"{pred:.2f}\t\t{actual}")
 

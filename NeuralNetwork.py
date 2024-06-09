@@ -11,10 +11,13 @@ Folder = 'DataFiles\\'
 year = 2023
 start_date = f"{year}-04-01"
 end_date = f"{year}-10-01"
-final_dataframe = pd.read_pickle(f'player_game_stats_{start_date}_to_{end_date}.pkl')
+final_dataframe = pd.read_pickle(f'{Folder}player_game_stats_{start_date}_to_{end_date}.pkl')
 
 # Remove rows with NaN values
 final_dataframe = final_dataframe.dropna()
+
+#Scale stadium hits
+final_dataframe['Stadium_Hits'] = final_dataframe['Stadium_Hits']/50
 
 # Assuming your DataFrame is named 'final_dataframe'
 # Select the relevant features and target variable
@@ -46,7 +49,7 @@ model.add(Dense(1))
 model.compile(optimizer=Adam(learning_rate=0.01), loss='mean_squared_error')
 
 # Train the model
-model.fit(X_train, y_train, epochs=100, batch_size=32, verbose=1)
+model.fit(X_train, y_train, epochs=500, batch_size=32, verbose=1)
 
 # Make predictions on the test set
 y_pred = model.predict(X_test)

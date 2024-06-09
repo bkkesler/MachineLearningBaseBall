@@ -1,11 +1,12 @@
-import pandas as pd
-from sklearn.ensemble import GradientBoostingRegressor
-from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.neighbors import KNeighborsRegressor
 from sklearn.metrics import mean_squared_error, r2_score
-from sklearn.preprocessing import StandardScaler  # Import StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+import pandas as pd
 from scipy.stats import spearmanr
 
 Folder = 'DataFiles\\'
+
 year = 2023
 start_date = f"{year}-04-01"
 end_date = f"{year}-10-01"
@@ -13,9 +14,6 @@ final_dataframe = pd.read_pickle(f'{Folder}player_game_stats_{start_date}_to_{en
 
 # Remove rows with NaN values
 final_dataframe = final_dataframe.dropna()
-
-#Scale stadium hits
-final_dataframe['Stadium_Hits'] = final_dataframe['Stadium_Hits']/50
 
 # Assuming your DataFrame is named 'final_dataframe'
 # Select the relevant features and target variable
@@ -38,27 +36,17 @@ scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
 # Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
 
-# Create and train the Gradient Boosting Regressor
-gb_regressor = GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_depth=3, random_state=42)
-gb_regressor.fit(X_train, y_train)
+# Create the KNN model
+k = 5  # Number of neighbors
+model = KNeighborsRegressor(n_neighbors=k)
 
-# Perform grid search to find the best hyperparameters
-param_grid = {
-    'n_estimators': [50, 100, 200],
-    'learning_rate': [0.01, 0.1, 0.2],
-    'max_depth': [3, 5, 7]
-}
-grid_search = GridSearchCV(estimator=gb_regressor, param_grid=param_grid, cv=5, scoring='neg_mean_squared_error')
-grid_search.fit(X_train, y_train)
+# Train the model
+model.fit(X_train, y_train)
 
-# Get the best model and its parameters
-best_gb_regressor = grid_search.best_estimator_
-print(f"Best parameters: {grid_search.best_params_}")
-
-# Make predictions on the test set using the best model
-y_pred = best_gb_regressor.predict(X_test)
+# Make predictions on the test set
+y_pred = model.predict(X_test)
 
 # Print the predictions and actual values side by side
 print("Predictions\tActual")

@@ -1,11 +1,12 @@
-import pandas as pd
-from sklearn.ensemble import GradientBoostingRegressor
+from sklearn.linear_model import PoissonRegressor
+from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error
 from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.metrics import mean_squared_error, r2_score
-from sklearn.preprocessing import StandardScaler  # Import StandardScaler
+from sklearn.preprocessing import StandardScaler
+import pandas as pd
 from scipy.stats import spearmanr
 
 Folder = 'DataFiles\\'
+
 year = 2023
 start_date = f"{year}-04-01"
 end_date = f"{year}-10-01"
@@ -13,9 +14,6 @@ final_dataframe = pd.read_pickle(f'{Folder}player_game_stats_{start_date}_to_{en
 
 # Remove rows with NaN values
 final_dataframe = final_dataframe.dropna()
-
-#Scale stadium hits
-final_dataframe['Stadium_Hits'] = final_dataframe['Stadium_Hits']/50
 
 # Assuming your DataFrame is named 'final_dataframe'
 # Select the relevant features and target variable
@@ -35,40 +33,51 @@ y = final_dataframe[target]
 
 # Create a scaler for all features
 scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
+X = scaler.fit_transform(X)
 
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Create and train the Gradient Boosting Regressor
-gb_regressor = GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_depth=3, random_state=42)
-gb_regressor.fit(X_train, y_train)
-
-# Perform grid search to find the best hyperparameters
+# Define the parameter grid for grid search
 param_grid = {
-    'n_estimators': [50, 100, 200],
-    'learning_rate': [0.01, 0.1, 0.2],
-    'max_depth': [3, 5, 7]
+    'alpha': [0.0, 0.1, 0.5, 1.0],
+    'max_iter': [100, 500, 1000]
 }
-grid_search = GridSearchCV(estimator=gb_regressor, param_grid=param_grid, cv=5, scoring='neg_mean_squared_error')
+
+# Create the Poisson regression model
+model = PoissonRegressor()
+
+# Perform grid search
+grid_search = GridSearchCV(estimator=model, param_grid=param_grid, cv=5, scoring='neg_mean_absolute_error')
 grid_search.fit(X_train, y_train)
 
-# Get the best model and its parameters
-best_gb_regressor = grid_search.best_estimator_
-print(f"Best parameters: {grid_search.best_params_}")
+# Get the best model
+best_model = grid_search.best_estimator_
 
-# Make predictions on the test set using the best model
-y_pred = best_gb_regressor.predict(X_test)
+# Print the best hyperparameters
+print("Best Hyperparameters:")
+print(grid_search.best_params_)
+
+# Train the best model on the entire training set
+best_model.fit(X_train, y_train)
+
+# Print the feature weights
+print("\nFeature Weights:")
+for feature, weight in zip(features, best_model.coef_):
+    print(f"{feature}: {weight:.4f}")
+
+# Make predictions on the test set
+y_pred = best_model.predict(X_test)
 
 # Print the predictions and actual values side by side
-print("Predictions\tActual")
-for pred, actual in zip(y_pred, y_test):
-    print(f"{pred:.2f}\t\t{actual}")
+# print("\nPredictions\tActual")
+# for pred, actual in zip(y_pred, y_test):
+#     print(f"{pred:.2f}\t\t{actual}")
 
 # Evaluate the model
-mse = mean_squared_error(y_test, y_pred)
-r2 = r2_score(y_test, y_pred)
+mae = mean_absolute_error(y_test, y_pred)
+mape = mean_absolute_percentage_error(y_test, y_pred)
 spearman_corr, _ = spearmanr(y_pred, y_test)
-print(f"\nMean Squared Error: {mse:.4f}")
-print(f"R-squared: {r2:.4f}")
+print(f"\nMean Absolute Error: {mae:.4f}")
+print(f"Mean Absolute Percentage Error: {mape:.4f}")
 print(f"Spearman Correlation: {spearman_corr:.4f}")
