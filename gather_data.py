@@ -10,7 +10,7 @@ from handle_edgecases import clean_and_format_date, modify_innings_pitched
 import re
 import traceback
 import random
-from pybaseball import playerid_lookup, statcast_pitcher
+from pybaseball import playerid_lookup, statcast_pitcher, schedule_and_record
 import pickle
 
 def get_top_90_players():
@@ -501,3 +501,4 @@ def get_active_players(year):
 # player_ids = get_active_players(year)
 # print(f"Found {len(player_ids)} active players for {year}.")
 # print(player_ids[:10])  # Print the first 10 player IDs as a sample
+

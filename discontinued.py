@@ -443,3 +443,60 @@ def calculate_hits_per_out(dataframe, team, game_date, games_list):
                 stats[f"{games}_{category}"] = None
 
     return stats
+
+
+def get_home_plate_umpire(boxscore_url):
+    time.sleep(3)
+    # Fetch the page content
+    response = requests.get(boxscore_url)
+    print(response)
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    # Find the text containing "HP - "
+    umpire_text = soup.find('HP - ')
+    if not umpire_text:
+        return 'Unknown'
+
+    # Extract the home plate umpire
+    home_plate_umpire = 'Unknown'
+    if 'HP - ' in umpire_text:
+        start = umpire_text.index('HP - ') + len('HP - ')
+        end = umpire_text.index(',', start)
+        home_plate_umpire = umpire_text[start:end]
+
+    return home_plate_umpire
+
+
+# Example usage
+boxscore_url = 'https://www.baseball-reference.com/boxes/LAN/LAN202303300.shtml'
+umpire = get_home_plate_umpire(boxscore_url)
+print(f"Home Plate Umpire: {umpire}")
+
+def get_team_games(team, year):
+    schedule_url = f"https://www.baseball-reference.com/teams/{team}/{year}-schedule-scores.shtml"
+    response = requests.get(schedule_url)
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    # Find all game links
+    games = soup.find_all('td', {'data-stat': 'boxscore'})
+    game_urls = ['https://www.baseball-reference.com' + game.find('a')['href'] for game in games if game.find('a')]
+
+    return game_urls
+
+
+# Fetch all games for a team and season
+team = 'LAN'  # Los Angeles Dodgers
+year = 2023
+game_urls = get_team_games(team, year)
+
+# Extract umpires for each game
+umpires = []
+for url in game_urls:
+    date = url.split('/')[-1].replace('.shtml', '')
+    umpire = get_home_plate_umpire(url)
+    umpires.append({'Date': date, 'Home Plate Umpire': umpire})
+
+# Save to CSV
+umpires_df = pd.DataFrame(umpires)
+umpires_df.to_csv('home_plate_umpires.csv', index=False)
+print(umpires_df)

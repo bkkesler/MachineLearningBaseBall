@@ -24,7 +24,8 @@ features = [
     '1_Starter', '1_MiddleReliever', '1_EndingPitcher',
     '3_Starter', '3_MiddleReliever', '3_EndingPitcher',
     '7_Starter', '7_MiddleReliever', '7_EndingPitcher',
-    'All_Starter', 'All_MiddleReliever', 'All_EndingPitcher'
+    'All_Starter', 'All_MiddleReliever', 'All_EndingPitcher',
+    'Stadium_Hits'
 ]
 target = 'Hits'
 

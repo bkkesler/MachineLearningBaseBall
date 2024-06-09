@@ -44,7 +44,9 @@ if not os.path.exists(pathName + "\\" + Folder + filename):
     top_player_game_logs.to_pickle(f'{Folder}top_player_game_logs' + str(year) + '.pkl')
     top_player_game_logs.to_csv(f'{Folder}top_player_game_logs' + str(year) + '.csv')
 else:
-    top_player_game_logs = pd.read_pickle(filename)
+    top_player_game_logs = pd.read_pickle(Folder+filename)
+
+#top_player_game_logs.info()
 
 pitcher_roster = get_pitcher_roster(year)
 print(f"Found {len(pitcher_roster)} pitchers in the roster.")
@@ -64,10 +66,10 @@ if not os.path.exists(pathName + "\\" + Folder + filename):
         pa_data['bbref_id'] = player_id
         dataFrames.append(pd.DataFrame(pa_data))
     top_player_pas = pd.concat(dataFrames, ignore_index=True)
-    top_player_pas.to_pickle(filename)
+    top_player_pas.to_pickle(Folder+filename)
     top_player_pas.to_csv(f'{Folder}top_batters_pas_{start_date}_to_{end_date}.csv')
 else:
-    top_player_pas = pd.read_pickle(filename)
+    top_player_pas = pd.read_pickle(Folder+filename)
 
 # Get pitcher data
 filename = f'all_pitchers_game_logs_{start_date}_to_{end_date}.pkl'
@@ -87,7 +89,7 @@ if not os.path.exists(pathName + "\\" + Folder + filename):
     pitcher_data_game_logs.to_csv(f'{Folder}all_pitchers_game_logs_{start_date}_to_{end_date}.csv', index=False)
 else:
     print('Loading pitcher game logs')
-    pitcher_data_game_logs = pd.read_pickle(filename)
+    pitcher_data_game_logs = pd.read_pickle(Folder+filename)
 
 
 print('Selecting eventful pitches')
@@ -136,6 +138,21 @@ pitcher_data_game_logs = determine_start_inning(pitcher_data_game_logs)
 # Initialize an empty list to store the dataframes for each player and game
 dataframes = []
 
+# Convert 'Tm' column to string
+top_player_game_logs['Tm_x'] = top_player_game_logs['Tm_x'].astype(str)
+
+# Convert 'Unnamed: 5' column to string
+top_player_game_logs['Unnamed: 5'] = top_player_game_logs['Unnamed: 5'].astype(str)
+
+# Determine the home team in top_player_game_logs
+top_player_game_logs['home_team'] = top_player_game_logs.apply(lambda row: row['Opp'] if '@' in row['Unnamed: 5'] else row['Tm_x'], axis=1)
+
+# Read the stadium_hits.csv file
+stadium_hits_df = pd.read_csv(f'{Folder}stadium_hits.csv')
+
+# Merge the stadium_hits_df with the top_player_game_logs dataframe
+top_player_game_logs = pd.merge(top_player_game_logs, stadium_hits_df, left_on='home_team', right_on='Baseball Reference Acronym', how='left')
+
 for player_id in top_90_player_ids:
     player_game_logs = top_player_game_logs[top_player_game_logs['Player'] == player_id]
     player_name = roster_dict[player_id]  # Retrieve the player's name using the bidirectional dictionary
@@ -176,7 +193,8 @@ for player_id in top_90_player_ids:
             **{f"Hits_Per_PA_{games}_games": hits_per_pa_stats.get(f"{games}_games_{game['p_throws']}", None) for games in games_list},
             # **{f"Hits_Per_PA_{k}": v for k, v in hits_per_pa_stats.items()},
             **hits_per_out_stats,
-            'Hits': game['H']
+            'Hits': game['H'],
+            'Stadium_Hits': game['H_stadium']
         }
         dataframes.append(pd.DataFrame(game_stats, index=[0]))
 

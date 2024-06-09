@@ -8,7 +8,7 @@ Folder = 'DataFiles\\'
 year = 2023
 start_date = f"{year}-04-01"
 end_date = f"{year}-10-01"
-final_dataframe = pd.read_pickle(f'player_game_stats_{start_date}_to_{end_date}.pkl')
+final_dataframe = pd.read_pickle(f'{Folder}player_game_stats_{start_date}_to_{end_date}.pkl')
 
 # Remove rows with NaN values
 final_dataframe = final_dataframe.dropna()
@@ -21,7 +21,8 @@ features = [
     '1_Starter', '1_MiddleReliever', '1_EndingPitcher',
     '3_Starter', '3_MiddleReliever', '3_EndingPitcher',
     '7_Starter', '7_MiddleReliever', '7_EndingPitcher',
-    'All_Starter', 'All_MiddleReliever', 'All_EndingPitcher'
+    'All_Starter', 'All_MiddleReliever', 'All_EndingPitcher',
+    'Stadium_Hits'
 ]
 target = 'Hits'
 

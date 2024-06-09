@@ -5,30 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="146dc8d3-0c12-4f9a-b324-d41107d26781" name="Changes" comment="Add files">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataFiles/542303_2023_plate_appearances.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataFiles/545361_2021_plate_appearances.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataFiles/592663_2023_plate_appearances.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataFiles/all_pitchers_game_logs_2023-04-01_to_2023-10-01.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataFiles/all_pitchers_game_logs_2023-04-01_to_2023-10-01.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataFiles/all_pitchers_game_logs_2023-04-01_to_2023-10-01_first2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataFiles/all_pitchers_game_logs_2023-04-01_to_2023-10-01_first2.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataFiles/all_pitchers_game_logs_2023-04-01_to_2023-10-01_first2_shortened.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataFiles/all_pitchers_game_logs_2023-04-01_to_2023-10-01_first2_shortened.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataFiles/all_pitchers_game_logs_2023-04-01_to_2023-10-01_first5.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataFiles/all_pitchers_game_logs_2023-04-01_to_2023-10-01_first5.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataFiles/all_pitchers_game_logs_2023.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataFiles/bettsmo01_2024_game_logs.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataFiles/combined_game_logs.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataFiles/pitcher_data_game_logs2023.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataFiles/plate_appearances_troutmi01_2021.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataFiles/player_game_stats_2023-04-01_to_2023-10-01.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataFiles/player_game_stats_2023-04-01_to_2023-10-01.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataFiles/top_batters_pas_2023-04-01_to_2023-10-01.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataFiles/top_batters_pas_2023-04-01_to_2023-10-01.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataFiles/top_player_game_logs2023.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataFiles/top_player_game_logs2023.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GradientBoostingRegressor.py" beforeDir="false" afterPath="$PROJECT_DIR$/GradientBoostingRegressor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discontinued.py" beforeDir="false" afterPath="$PROJECT_DIR$/discontinued.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gather_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/gather_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +66,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/BeatTheStreak/pythonProject",
+    "last_opened_file_path": "D:/BeatTheStreak/pythonProject/gather_data.py",
     "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog"
   }
 }]]></component>
