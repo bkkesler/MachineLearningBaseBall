@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="146dc8d3-0c12-4f9a-b324-d41107d26781" name="Changes" comment="Added getting umpire stats to discontinued and added getting stadium information">
-      <change afterPath="$PROJECT_DIR$/KNN.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LinearRegression.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LinearRegressionRandomSamples.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LinearRegressionWindow.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NonNegativeLinearRegression.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PoissonRegressionUncertaintyEstimates.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PoissonRegressor.py" afterDir="false" />
+    <list default="true" id="146dc8d3-0c12-4f9a-b324-d41107d26781" name="Changes" comment="Added getting umpire stats to discontinued and added getting stadium information. Also added various machine learning methods">
+      <change afterPath="$PROJECT_DIR$/NeuralNetworkRandomizeOrder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GradientBoostingRegressor.py" beforeDir="false" afterPath="$PROJECT_DIR$/GradientBoostingRegressor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LinearRegression.py" beforeDir="false" afterPath="$PROJECT_DIR$/LinearRegression.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NeurakNetworkRandomSamples.py" beforeDir="false" afterPath="$PROJECT_DIR$/NeurakNetworkRandomSamples.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NeuralNetwork.py" beforeDir="false" afterPath="$PROJECT_DIR$/NeuralNetwork.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,7 +57,9 @@
     "Python.LinearRegression.executor": "Run",
     "Python.LinearRegressionRandomSamples.executor": "Run",
     "Python.LinearRegressionWindow.executor": "Run",
+    "Python.NeurakNetworkRandomSamples.executor": "Run",
     "Python.NeuralNetwork.executor": "Run",
+    "Python.NeuralNetworkRandomizeOrder.executor": "Run",
     "Python.NonNegativeLinearRegression.executor": "Run",
     "Python.PoissonRegressionUncertaintyEstimates.executor": "Run",
     "Python.PoissonRegressor.executor": "Run",
@@ -78,7 +75,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/BeatTheStreak/pythonProject/gather_data.py",
+    "last_opened_file_path": "D:/BeatTheStreak/pythonProject/main.py",
     "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog"
   }
 }]]></component>
@@ -183,7 +180,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717908415789</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added getting umpire stats to discontinued and added getting stadium information. Also added various machine learning methods">
+      <option name="closed" value="true" />
+      <created>1717975220674</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1717975220674</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -200,6 +205,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add files" />
     <MESSAGE value="Added getting umpire stats to discontinued and added getting stadium information" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added getting umpire stats to discontinued and added getting stadium information" />
+    <MESSAGE value="Added getting umpire stats to discontinued and added getting stadium information. Also added various machine learning methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added getting umpire stats to discontinued and added getting stadium information. Also added various machine learning methods" />
   </component>
 </project>

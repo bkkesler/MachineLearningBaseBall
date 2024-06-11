@@ -5,6 +5,7 @@ from sklearn.preprocessing import StandardScaler
 import pandas as pd
 from scipy.stats import spearmanr
 import numpy as np
+import joblib
 
 Folder = 'DataFiles\\'
 
@@ -20,7 +21,7 @@ final_dataframe = final_dataframe.dropna()
 sample_sizes = [1, 3, 5, 7]
 
 # Define the number of random samples to choose
-num_samples = 2000
+num_samples = 1000
 
 # Select the relevant features and target variable
 features = [
@@ -97,16 +98,22 @@ for sample_size in sample_sizes:
     print(f"Mean Absolute Percentage Error: {mape:.4f}")
     print(f"Spearman Correlation: {spearman_corr:.4f}")
 
+
 # Find the best sample size based on the evaluation metrics
 best_sample_size = None
 best_metrics = None
+best_model = None
 
 for sample_size, metrics in metrics_dict.items():
     if best_metrics is None or metrics['Spearman Correlation'] > best_metrics['Spearman Correlation']:
         best_sample_size = sample_size
         best_metrics = metrics
+        best_model = nn_model  # Save the best model
 
 print(f"\nBest Sample Size: {best_sample_size}")
 print("Best Metrics:")
 for metric, value in best_metrics.items():
     print(f"{metric}: {value:.4f}")
+
+# Save the best model to a file
+joblib.dump(best_model, 'best_nn_model.pkl')
