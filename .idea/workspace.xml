@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="146dc8d3-0c12-4f9a-b324-d41107d26781" name="Changes" comment="Added getting umpire stats to discontinued and added getting stadium information. Also added various machine learning methods">
-      <change afterPath="$PROJECT_DIR$/NeuralNetworkRandomizeOrder.py" afterDir="false" />
+    <list default="true" id="146dc8d3-0c12-4f9a-b324-d41107d26781" name="Changes" comment="Added more testing">
+      <change afterPath="$PROJECT_DIR$/LogisticRegression.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LinearRegression.py" beforeDir="false" afterPath="$PROJECT_DIR$/LinearRegression.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NeurakNetworkRandomSamples.py" beforeDir="false" afterPath="$PROJECT_DIR$/NeurakNetworkRandomSamples.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NeuralNetwork.py" beforeDir="false" afterPath="$PROJECT_DIR$/NeuralNetwork.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +55,7 @@
     "Python.LinearRegression.executor": "Run",
     "Python.LinearRegressionRandomSamples.executor": "Run",
     "Python.LinearRegressionWindow.executor": "Run",
+    "Python.LogisticRegression.executor": "Run",
     "Python.NeurakNetworkRandomSamples.executor": "Run",
     "Python.NeuralNetwork.executor": "Run",
     "Python.NeuralNetworkRandomizeOrder.executor": "Run",
@@ -188,7 +187,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717975220674</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added more testing">
+      <option name="closed" value="true" />
+      <created>1718137635813</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1718137635813</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -206,6 +213,7 @@
     <MESSAGE value="Add files" />
     <MESSAGE value="Added getting umpire stats to discontinued and added getting stadium information" />
     <MESSAGE value="Added getting umpire stats to discontinued and added getting stadium information. Also added various machine learning methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added getting umpire stats to discontinued and added getting stadium information. Also added various machine learning methods" />
+    <MESSAGE value="Added more testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more testing" />
   </component>
 </project>
