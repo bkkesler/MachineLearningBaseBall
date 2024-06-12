@@ -179,10 +179,10 @@ for player_id in top_90_player_ids:
         for games in games_list:
             if games == 'All':
                 hits_per_game = hit_data['H'].mean()
-                PAs_per_game_batter = hit_data['PA'].mean()
+                PAs_per_game_batter = pd.to_numeric(hit_data['PA']).mean()
             else:
                 hits_per_game = hit_data.head(games)['H'].mean()
-                PAs_per_game_batter = hit_data.head(games)['PA'].mean()
+                PAs_per_game_batter = pd.to_numeric(hit_data.head(games)['PA']).mean()
             hits_per_game_stats[f"{games}_games"] = hits_per_game
             PAs_per_game_batter_stats[f"{games}_games"] = PAs_per_game_batter
 

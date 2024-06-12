@@ -36,28 +36,48 @@ def calculate_hits_per_out_statcast(dataframe, team, game_date, games_list):
     team_df = dataframe[(dataframe['Tm'] == team)]
     team_df = team_df[team_df['DateTime'] < game_date]
 
+    # Get the starting pitcher for the specified game date
+    starting_pitcher = dataframe[(dataframe['Tm'] == team) & (dataframe['DateTime'] == game_date) & (dataframe['inning_start'] == 1)]['Pitcher']
+    if not starting_pitcher.empty:
+        starting_pitcher = starting_pitcher.iloc[0]
+    else:
+        starting_pitcher = None
+
     # Initialize dictionary to store stats
     stats = {}
 
+    stats['Starting_pitcher'] = starting_pitcher
     # Define pitcher categories
-    categories = ['Starter', 'MiddleReliever', 'EndingPitcher']
+    categories = ['Starter', 'Bullpen']
 
-    for games in games_list:
-        if games == 'All':
-            team_period_df = team_df
+    for category in categories:
+        if category == 'Starter':
+            # Filter the DataFrame for the games pitched by the starting pitcher
+            starter_games = team_df[team_df['Pitcher'] == starting_pitcher]['DateTime'].unique()
+            starter_games = sorted(starter_games, reverse=True)
         else:
-            unique_dates = team_df['DateTime'].unique()
-            sorted_dates = sorted(unique_dates, reverse=True)
-            selected_dates = sorted_dates[:games]
-            team_period_df = team_df[team_df['DateTime'].isin(selected_dates)]
+            # Consider all the team's games for the other categories
+            starter_games = team_df['DateTime'].unique()
+            starter_games = sorted(starter_games, reverse=True)
 
-        for category in categories:
+        for games in games_list:
+            if games == 'All':
+                selected_games = starter_games
+            else:
+                selected_games = starter_games[:games]
+            if games != 'All':
+                if len(selected_games) < games:
+                    stats[f"hits_per_out_{games}_{category}"] = None
+                    if category == 'Starter':
+                        stats[f"{games}_innings_pitched_pergame_starter"] = None
+                    continue
+
+            team_period_df = team_df[team_df['DateTime'].isin(selected_games)]
+
             if category == 'Starter':
-                category_df = team_period_df[team_period_df['inning_start'] <= 3]
-            elif category == 'MiddleReliever':
-                category_df = team_period_df[(team_period_df['inning_start'] > 3) & (team_period_df['inning_start'] <= 6)]
-            else:  # category == 'EndingPitcher'
-                category_df = team_period_df[team_period_df['inning_start'] > 6]
+                category_df = team_period_df[(team_period_df['inning_start'] == 1) & (team_period_df['Pitcher'] == starting_pitcher)]
+            elif category == 'Bullpen':
+                category_df = team_period_df[(team_period_df['inning_start'] > 1)]
 
             # Total events
             events_counts = category_df['events'].value_counts()
@@ -77,13 +97,17 @@ def calculate_hits_per_out_statcast(dataframe, team, game_date, games_list):
 
             if outs > 0:
                 hits_per_out = hits / outs
-                stats[f"{games}_{category}"] = hits_per_out
+                stats[f"hits_per_out_{games}_{category}"] = hits_per_out
             else:
-                stats[f"{games}_{category}"] = None
+                stats[f"hits_per_out_{games}_{category}"] = None
 
-        # Calculate innings pitched per game by the starter
-        innings_pitched_pergame_starter = (starter_outs // 3) / games if games != 'All' else (starter_outs // 3) / len(team_df['DateTime'].unique())
-        stats[f"{games}_innings_pitched_pergame_starter"] = innings_pitched_pergame_starter
+            # Calculate innings pitched per game by the starter
+            if category == 'Starter' and starter_outs > 0:
+                #print(f'{category} outs = {starter_outs} games = {games} game type = {type(games)}')
+                innings_pitched_pergame_starter = (starter_outs // 3) / len(selected_games)
+                stats[f"{games}_innings_pitched_pergame_starter"] = innings_pitched_pergame_starter
+            elif category == 'Starter': #Essentially if there is no outs done by the starting pitcher
+                stats[f"{games}_innings_pitched_pergame_starter"] = None
 
     return stats
 
