@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="146dc8d3-0c12-4f9a-b324-d41107d26781" name="Changes" comment="Added more testing">
-      <change afterPath="$PROJECT_DIR$/LogisticRegression.py" afterDir="false" />
+    <list default="true" id="146dc8d3-0c12-4f9a-b324-d41107d26781" name="Changes" comment="Added logistic regression and alternate linear regression">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LinearRegression.py" beforeDir="false" afterPath="$PROJECT_DIR$/LinearRegression.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculate_stats.py" beforeDir="false" afterPath="$PROJECT_DIR$/calculate_stats.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +74,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/BeatTheStreak/pythonProject/main.py",
+    "last_opened_file_path": "D:/BeatTheStreak/pythonProject/gather_data.py",
     "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog"
   }
 }]]></component>
@@ -195,7 +195,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718137635813</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added logistic regression and alternate linear regression">
+      <option name="closed" value="true" />
+      <created>1718154361878</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1718154361878</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -214,6 +222,7 @@
     <MESSAGE value="Added getting umpire stats to discontinued and added getting stadium information" />
     <MESSAGE value="Added getting umpire stats to discontinued and added getting stadium information. Also added various machine learning methods" />
     <MESSAGE value="Added more testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added more testing" />
+    <MESSAGE value="Added logistic regression and alternate linear regression" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added logistic regression and alternate linear regression" />
   </component>
 </project>

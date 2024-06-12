@@ -59,19 +59,31 @@ def calculate_hits_per_out_statcast(dataframe, team, game_date, games_list):
             else:  # category == 'EndingPitcher'
                 category_df = team_period_df[team_period_df['inning_start'] > 6]
 
+            # Total events
             events_counts = category_df['events'].value_counts()
             hits = sum(events_counts.get(hit_type, 0) for hit_type in ['single', 'double', 'triple', 'home_run'])
 
             # Total events
-            total_instances = category_df['Pitcher'].notna().sum()
+            total_instances = category_df['events'].notna().sum()
+
+            # Count double plays and add them to the outs
+            double_plays = category_df['events'].str.contains('double_play').sum()
 
             outs = total_instances - hits
+
+            outs += double_plays
+            if category == 'Starter':
+                starter_outs = outs
 
             if outs > 0:
                 hits_per_out = hits / outs
                 stats[f"{games}_{category}"] = hits_per_out
             else:
                 stats[f"{games}_{category}"] = None
+
+        # Calculate innings pitched per game by the starter
+        innings_pitched_pergame_starter = (starter_outs // 3) / games if games != 'All' else (starter_outs // 3) / len(team_df['DateTime'].unique())
+        stats[f"{games}_innings_pitched_pergame_starter"] = innings_pitched_pergame_starter
 
     return stats
 
@@ -99,7 +111,7 @@ def calculate_hits_per_out(dataframe, team, game_date, games_list):
     stats = {}
 
     # Define pitcher categories
-    categories = ['Starter', 'MiddleReliever', 'EndingPitcher']
+    categories = ['Starter', 'MiddleReliever', 'EndingPitcher', 'Relievers']
 
     for games in games_list:
         if games == 'All':
@@ -123,8 +135,10 @@ def calculate_hits_per_out(dataframe, team, game_date, games_list):
                 category_df = pitcher_period_df
             elif category == 'MiddleReliever':
                 category_df = team_period_df[team_period_df['Entered'].str.extract(r'(\d+)', expand=False).astype(int).between(2, 7)]
-            else:  # category == 'EndingPitcher'
+            elif category == 'EndingPitcher':
                 category_df = team_period_df[team_period_df['Entered'].str.extract(r'(\d+)', expand=False).astype(int) >= 8]
+            else:  # category ==  'Relievers':
+                category_df = team_period_df[team_period_df['Entered'].str.extract(r'(\d+)', expand=False).astype(int) > 1]
 
             innings_pitched = category_df['IP'].sum()
             hits_allowed = category_df['H'].sum()

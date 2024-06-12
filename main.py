@@ -162,16 +162,29 @@ for player_id in top_90_player_ids:
         #print(game_date)
         opposing_team = game['Opp']
 
-        # 1. The player's hits per game
+        # 1. The player's hits per game and hit streak
         games_list = [1, 3, 7, 'All']
         hits_per_game_stats = {}
+        PAs_per_game_batter_stats = {}
+        hit_streak = 0
+
+        hit_data = player_game_logs[player_game_logs['DateTime'] < game_date].sort_values('DateTime', ascending=False)
+
+        for _, game in hit_data.iterrows():
+            if game['H'] > 0:
+                hit_streak += 1
+            else:
+                break
+
         for games in games_list:
-            hit_data = player_game_logs[player_game_logs['DateTime'] < game_date]
             if games == 'All':
                 hits_per_game = hit_data['H'].mean()
+                PAs_per_game_batter = hit_data['PA'].mean()
             else:
-                hits_per_game = hit_data.sort_values('DateTime', ascending=False).head(games)['H'].mean()
+                hits_per_game = hit_data.head(games)['H'].mean()
+                PAs_per_game_batter = hit_data.head(games)['PA'].mean()
             hits_per_game_stats[f"{games}_games"] = hits_per_game
+            PAs_per_game_batter_stats[f"{games}_games"] = PAs_per_game_batter
 
         # 2. The player's hit per plate appearance against the handedness of the opposing starting pitcher (LHP or RHP)
         pa_data = top_player_pas[top_player_pas['bbref_id'] == player_id]
@@ -190,11 +203,13 @@ for player_id in top_90_player_ids:
             'Date': game_date,
             'Opposing_Team': opposing_team,
             **{f"Hits_Per_Game_{k}": v for k, v in hits_per_game_stats.items()},
+            **{f"PAs_Per_Game_{k}": v for k, v in PAs_per_game_batter_stats.items()},  # Add PAs per game
             **{f"Hits_Per_PA_{games}_games": hits_per_pa_stats.get(f"{games}_games_{game['p_throws']}", None) for games in games_list},
             # **{f"Hits_Per_PA_{k}": v for k, v in hits_per_pa_stats.items()},
             **hits_per_out_stats,
             'Hits': game['H'],
-            'Stadium_Hits': game['H_stadium']
+            'Stadium_Hits': game['H_stadium'],
+            'Hit_Streak': hit_streak  # Add hit streak
         }
         dataframes.append(pd.DataFrame(game_stats, index=[0]))
 
